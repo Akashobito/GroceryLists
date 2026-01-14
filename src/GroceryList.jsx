@@ -200,7 +200,7 @@ function GroceryList() {
                 <img className={`strikeout-line2 ${value.status === 'notDone' ? '' : 'strikeout-active'}`} src={strikeout} />
                 <div className={`list-div ${value.status === 'notDone' ? '' : 'checked'}`}>
                   {/* {console.log(value.id)} */}
-                  <p style={{ display: 'inline-block', marginLeft: '18px', marginTop: '-3px' }}>{`${index + 1}. ${value.name}`}</p>
+                  <p style={{ display: 'inline-block', marginLeft: '13px', marginTop: '-2px' }}>{`${index + 1}. ${value.name}`}</p>
                 </div>
                 <div className="update">
                   <a className={`edit-button ${value.status === 'notDone' ? '' : 'checked'}`} onClick={() => { if (value.status === 'notDone') { handleEdit(value.name, value.id) } }}></a>

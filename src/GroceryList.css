@@ -37,7 +37,7 @@ body {
   background-color: #F9F2D8;
 
   border: none;
-  /* outline: none; */
+  outline: none;
 
   position: absolute;
 
@@ -322,6 +322,9 @@ body {
 }
 
 @media(max-width: 500px) {
+  * {
+    font-size: 14px;
+  }
   body {
     background: url(bgfullsize.png) top left / 100vw 100vh no-repeat;
     background-color: #F9F2D8;
@@ -352,19 +355,19 @@ body {
   .enter-grocery {
     background-image: url(input.png);
     background-repeat: no-repeat;
-    background-size:  195px 35px;
+    background-size:  200px 35px;
     height: 35px;
-    width: 185px;
+    width: 190px;
     padding-left: 10px;
     background-color: #F9F2D8;
 
     border: none;
-    /* outline: none; */
+    outline: none;
 
     position: absolute;
 
     top: 107px;
-    left: 55px;
+    left: 45px;
     text-transform: capitalize;
 
   }
@@ -388,11 +391,11 @@ body {
   .list-div {
     background-color: #F9F2D8;
     background-image: url(inputbox.png);
-    background-size: 194px 39px;
+    background-size: 199px 39px;
     background-repeat: no-repeat;
     margin-top: 5px;
 
-    width: 48vw;
+    width: 58vw  !important; 
     height: 39px;
 
     /* padding: 30px 74px; */
@@ -409,7 +412,7 @@ body {
     width: 80vw;
     height: 72vh;
     top: 155px;
-    left: 55px;
+    left: 44px;
   }
 
   .edit-button {
@@ -463,13 +466,14 @@ body {
 
   .strikeout-line2 {
     position: absolute;
-    width: 39px;
-    height: 4px;
+    width: 36px;
+    height: 3px;
     opacity: 1 !important;
     z-index: 1;
     display: none;
 
-    right: 12px;
+    right: 0px;
+    margin-top: 1px;
   }
 
   .strikeout-line {
@@ -477,8 +481,9 @@ body {
     width: 236px;
     height: 3px;
     opacity: 1 !important;
-    z-index: 1;
+    z-index: 0.8;
     display: none;
+    margin-top: 4px;
   }
 
   .strikeout-active {
