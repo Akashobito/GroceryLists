@@ -333,14 +333,14 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* overflow: hidden  !important; */
+    overflow: hidden  !important;
   }
   
   .background-image {
     width: 100vw;
     min-width: 100vw !important;
     height: 97vh !important;
-    /* overflow: hidden  !important; */
+    overflow: hidden  !important;
   }
 
   .pencil-image {
