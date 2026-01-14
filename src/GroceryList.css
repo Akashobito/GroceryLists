@@ -1,0 +1,486 @@
+* {
+  font-family: Balsamiq Sans;
+  font-size: 18px;
+  padding: 0;
+  margin: 0;
+}
+
+.background-image {
+  width: 700px;
+  height: 90vh;
+  background-size: 100%;
+  position: relative;
+  /* overflow: scroll;
+  scrollbar-width: none; */
+}
+
+body {
+  background: url(bgfullsize.png) top left / 100vw 100vh no-repeat;
+  /* background-repeat: no-repeat;
+  background-size: 100vw 100vh; */
+  background-color: #F9F2D8;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.enter-grocery {
+  background-image: url(input.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 39px;
+  width: 245px;
+  padding: 0px 0px;
+  padding-left: 10px;
+  background-color: #F9F2D8;
+
+  border: none;
+  outline: none;
+
+  position: absolute;
+
+  top: 80px;
+  left: 180px;
+  text-transform: capitalize;
+
+}
+
+.submit-button {
+  background-image: url(submit.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  width: 100px;
+  height: 100px;
+
+  position: absolute;
+
+  top: 27px;
+  right: 120px;
+
+  cursor: pointer;
+}
+
+.list-div {
+  background-color: #F9F2D8;
+  background-image: url(inputbox.png);
+  background-size: 257px 49px;
+  background-repeat: no-repeat;
+  width: 245px;
+  margin-top: 5px;
+
+  width: 257px;
+  height: 49px;
+
+  /* padding: 30px 74px; */
+
+  display: flex;
+  align-items: center;
+
+}
+
+.listed-item {
+  position: absolute;
+  overflow: scroll;
+  scrollbar-width: none;
+  height: 69vh;
+  top: 130px;
+  left: 181px;
+}
+
+.edit-button {
+  background-image: url(edit1.png);
+  background-repeat: no-repeat;
+  background-size: 40px 40px;
+  display: block;
+
+  width: 40px;
+  height: 40px;
+  color: transparent;
+  cursor: pointer;
+}
+
+.delete-button {
+  background-image: url(delete.png);
+  background-repeat: no-repeat;
+  background-size: 47px 37px;
+  display: block;
+
+  width: 45px;
+  height: 40px;
+  color: transparent;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.check-button {
+  background-image: url(check.png);
+  background-repeat: no-repeat;
+  background-size: 40px 37px;
+  display: block;
+
+  width: 40px;
+  height: 40px;
+  color: transparent;
+  cursor: pointer;
+  margin-left: 10px;
+  margin-top: -2px;
+}
+
+.update {
+  display: flex;
+  margin-left: 13px;
+}
+
+.item-container {
+  display: flex;
+  align-items: center;
+}
+
+.checked {
+  opacity: 0.6;
+}
+
+.pencil-image {
+  position: absolute;
+  top: 130px;
+  left: 55px;
+  width: 160px;
+  height: 500px;
+  transform: rotate(-10.5deg);
+
+}
+
+.strikeout-line {
+  position: absolute;
+  width: 330px;
+  height: 5px;
+  opacity: 1 !important;
+  z-index: 1;
+  display: none;
+}
+
+.strikeout-line2 {
+  position: absolute;
+  width: 50px;
+  height: 5px;
+  opacity: 1 !important;
+  z-index: 1;
+  display: none;
+
+  right: 0;
+}
+
+.strikeout-active {
+  display: block;
+}
+
+.veggies-image {
+  width: 500px;
+  height: 250px;
+
+  position: absolute;
+  right: 0;
+  top: 90px;
+  display: none;
+}
+
+.capsicum-image {
+  position: absolute;
+  left: 100px;
+  top: 80px;
+
+  width: 200px;
+  height: 200px;
+  transform: rotate(-2deg);
+
+  display: none;
+}
+
+.carrot-image {
+  position: absolute;
+  left: 200px;
+  top: 360px;
+
+  width: 300px;
+  height: 300px;
+  transform: rotate(-10deg);
+  display: none;
+}
+
+.ghee-image {
+  position: absolute;
+  left: 140px;
+  top: 300px;
+
+  width: 130px;
+  height: 180px;
+  /* transform: rotate(-10deg); */
+  display: none;
+}
+
+.onion-image {
+  position: absolute;
+  right: 180px;
+  top: 470px;
+
+  width: 140px;
+  height: 160px;
+  transform: rotate(-10deg);
+  display: none;
+}
+
+
+.garlic-image {
+  position: absolute;
+  right: 60px;
+  top: 470px;
+
+  width: 160px;
+  height: 140px;
+  display: none;
+
+}
+
+.ginger-image {
+  position: absolute;
+  right: 134px;
+  top: 340px;
+
+  width: 130px;
+  height: 120px;
+  display: none;
+
+}
+
+.milk-image {
+  position: absolute;
+  right: 330px;
+  top: 360px;
+
+  width: 140px;
+  height: 190px;
+  display: none;
+
+}
+
+.chicken-image {
+  position: absolute;
+  left: 250px;
+  top: 100px;
+  transform: rotate(320deg);
+
+  width: 250px;
+  height: 140px;
+  display: none;
+
+}
+
+.salt-image {
+  position: absolute;
+  left: 350px;
+  top: 200px;
+
+  width: 150px;
+  height: 140px;
+  display: none;
+
+}
+
+@media(min-width: 800px) {
+  body {
+    background: url(bghdfullsize1.png) top left / 100vw 100vh no-repeat;
+    background-color: #F9F2D8;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .pencil-image {
+    left: 480px;
+  }
+
+  .veggies-image {
+    display: block;
+  }
+
+  .carrot-image,
+  .capsicum-image,
+  .onion-image,
+  .ghee-image,
+  .chicken-image,
+  .salt-image,
+  .ginger-image,
+  .garlic-image,
+  .milk-image {
+    display: block;
+  }
+}
+
+@media(max-width: 700px) {
+  body {
+    background: url(bgfullsize.png) top left / 99vw 100vh no-repeat;
+    background-color: #F9F2D8;
+    height: 97vh !important;
+    width: 100vw !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .background-image {
+    width: 500px !important;
+    height: 97vh;
+  }
+
+  .pencil-image {
+    /* display: none; */
+    position: absolute;
+    transform: rotate(-10.3deg);
+    left: 390px;
+    width: 140px;
+    height: 460px;
+    top: 147px;
+  }
+
+  .enter-grocery {
+    background-image: url(input.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 39px;
+    width: 245px;
+    padding: 0px 0px;
+    padding-left: 10px;
+    background-color: #F9F2D8;
+
+    border: none;
+    outline: none;
+
+    position: absolute;
+
+    top: 107px;
+    left: 50px;
+    text-transform: capitalize;
+
+  }
+
+  .submit-button {
+    background-image: url(submit.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    width: 100px;
+    height: 100px;
+
+    position: absolute;
+
+    top: 54px;
+    right: 69px;
+
+    cursor: pointer;
+  }
+
+  .list-div {
+    background-color: #F9F2D8;
+    background-image: url(inputbox.png);
+    background-size: 257px 49px;
+    background-repeat: no-repeat;
+    margin-top: 5px;
+
+    width: 257px;
+    height: 49px;
+
+    /* padding: 30px 74px; */
+
+    display: flex;
+    align-items: center;
+
+  }
+
+  .listed-item {
+    position: absolute;
+    overflow: scroll;
+    scrollbar-width: none;
+    height: 72vh;
+    top: 155px;
+    left: 50px;
+  }
+
+  .edit-button {
+    background-image: url(edit1.png);
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+    display: block;
+
+    width: 30px;
+    height: 30px;
+    color: transparent;
+    cursor: pointer;
+  }
+
+  .delete-button {
+    background-image: url(delete.png);
+    background-repeat: no-repeat;
+    background-size: 37px 27px;
+    display: block;
+
+    width: 35px;
+    height: 30px;
+    color: transparent;
+    cursor: pointer;
+    margin-left: 5px;
+  }
+
+  .check-button {
+    background-image: url(check.png);
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+    display: block;
+
+    width: 30px;
+    height: 30px;
+    color: transparent;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-top: -3px;
+  }
+
+  .update {
+    display: flex;
+    margin-left: 5px;
+  }
+
+  .item-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .strikeout-line2 {
+    position: absolute;
+    width: 39px;
+    height: 5px;
+    opacity: 1 !important;
+    z-index: 1;
+    display: none;
+
+    right: 0;
+  }
+
+  .strikeout-line {
+    position: absolute;
+    width: 296px;
+    height: 5px;
+    opacity: 1 !important;
+    z-index: 1;
+    display: none;
+  }
+
+  .strikeout-active {
+    display: block;
+  }
+
+}
