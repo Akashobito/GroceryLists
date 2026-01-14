@@ -328,17 +328,19 @@ body {
   body {
     background: url(bgfullsize.png) top left / 100vw 100vh no-repeat;
     background-color: #F9F2D8;
-    height: 100vh !important;
+    height: 97vh !important;
     width: 100vw !important;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden  !important;
   }
-
+  
   .background-image {
     width: 100vw;
     min-width: 100vw !important;
-    height: 100vh;
+    height: 97vh !important;
+    overflow: hidden  !important;
   }
 
   .pencil-image {
@@ -410,7 +412,7 @@ body {
     overflow: scroll;
     scrollbar-width: none;
     width: 80vw;
-    height: 72vh;
+    height: 70vh;
     top: 155px;
     left: 44px;
   }
