@@ -328,7 +328,7 @@ body {
   body {
     background: url(bgfullsize.png) top left / 100vw 100vh no-repeat;
     background-color: #F9F2D8;
-    height: 97vh !important;
+    height: 100vh !important;
     width: 100vw !important;
     display: flex;
     align-items: center;
@@ -338,7 +338,7 @@ body {
   .background-image {
     width: 100vw;
     min-width: 100vw !important;
-    height: 97vh;
+    height: 100vh;
   }
 
   .pencil-image {
