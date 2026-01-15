@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 // import axios from "axios";
-import "@fontsource/balsamiq-sans"; 
+import "@fontsource/balsamiq-sans";
 import './GroceryList.css';
 import pencil from './pencilhd.png'
 import strikeout from './strikeout.png';
@@ -15,22 +15,28 @@ import ginger from './ginger.png';
 import milk from './milk.png';
 import salt from './salt.png';
 
+
 function GroceryList() {
   const [inputText, setInputText] = useState('');
   const [groceryList, setGroceryList] = useState(JSON.parse(localStorage.getItem('groceryList')) || []);
   const [isAutoscroll, setIsAutoscroll] = useState(true);   //to controll the autoscroll because when submit and checkout, both are scrolling
+  const [totalQuantity, setTotalQuantity] = useState(0);
+  const [bought, setBought] = useState(0);
+  const [remained, setRemained] = useState(0);
+
+  let boughtItem = 0;
+  let remainedItem = 0;
 
   const ref = useRef(null);
 
-
   /*  async function getGroceryList() {
-     const response = await axios.get('http://localhost:3000/groceryList');
-     setGroceryList(response.data);
-   }
- 
-   useEffect(() => {
-     getGroceryList();
-   }, []) */
+    const response = await axios.get('http://localhost:3000/groceryList');
+    setGroceryList(response.data);
+    }
+    
+    useEffect(() => {
+      getGroceryList();
+      }, []) */
 
   useEffect(() => {
     if (ref.current && isAutoscroll) {
@@ -39,6 +45,33 @@ function GroceryList() {
       // console.log(listRef.scrollHeight);
       listRef.scrollTop = listRef.scrollHeight;
     }
+    const handleQuantity = () => {
+      const quantity = groceryList.length;
+      setTotalQuantity(quantity);
+    }
+
+    const handleBought = () => {
+      groceryList.forEach((value) => {
+        if (value.status === 'done') {
+          boughtItem += 1;
+        }
+      })
+      setBought(boughtItem);
+    }
+
+    const handleRemained = () => {
+      groceryList.forEach((value) => {
+        if (value.status === 'notDone') {
+          remainedItem += 1;
+        }
+      });
+      setRemained(remainedItem);
+    }
+
+    handleQuantity();
+    handleBought();
+    handleRemained();
+
   }, [groceryList]);
 
   const handleLocalStorage = (groceryList) => {
@@ -102,7 +135,7 @@ function GroceryList() {
 
     const matchingList = matchingGroceryList(id);
 
-    const updateValue = prompt('Enter the value', name);
+    const updateValue = prompt('Update the value', name);
     // console.log(updateValue);
 
     const alterName = updateValue === null ? name : updateValue;
@@ -124,15 +157,19 @@ function GroceryList() {
     // getGroceryList(); */
   }
 
-  const handleDelete = async (index) => {
-
+  const handleDelete = async (index,name) => {
     setIsAutoscroll(false);
 
-    const currentList = [...groceryList];
-    currentList.splice(index, 1);
-    console.log(currentList);
-    setGroceryList(currentList);
-    handleLocalStorage(currentList)
+    const value = prompt('you want to remove it!',name);
+
+    if(value){
+      const currentList = [...groceryList];
+      currentList.splice(index, 1);
+      console.log(currentList);
+      setGroceryList(currentList);
+      handleLocalStorage(currentList)
+    }
+
     // console.log('delete');
     // await axios.delete(`http://localhost:3000/groceryList/${id}`);
     // getGroceryList()
@@ -182,6 +219,11 @@ function GroceryList() {
       <img className="salt-image" src={salt} />
 
       <div className='background-image'>
+        <div className="notification-label">
+          <p className="quantity-label">Items : {totalQuantity}</p>
+          <p className="bought-label">Bought : {bought}</p>
+          <p className="balance-label">Buy : {remained}</p>
+        </div>
         <input className="enter-grocery"
           placeholder="Enter Grocery"
           value={inputText}
@@ -204,7 +246,7 @@ function GroceryList() {
                 </div>
                 <div className="update">
                   <a className={`edit-button ${value.status === 'notDone' ? '' : 'checked'}`} onClick={() => { if (value.status === 'notDone') { handleEdit(value.name, value.id) } }}></a>
-                  <a className="delete-button" onClick={() => { handleDelete(index) }}></a>
+                  <a className="delete-button" onClick={() => { handleDelete(index,value.name) }}></a>
                   <a className={`check-button ${value.status === 'notDone' ? '' : 'checked'}`} onClick={() => { if (value.status === 'notDone') { handleCheck(value.id) } }}></a>
                 </div>
               </div>

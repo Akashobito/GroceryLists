@@ -325,6 +325,7 @@ body {
   * {
     font-size: 14px;
   }
+
   body {
     background: url(bgfullsize.png) top left / 100vw 97vh no-repeat;
     background-color: #F9F2D8;
@@ -333,14 +334,14 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden  !important;
+    overflow: hidden !important;
   }
-  
+
   .background-image {
     width: 100vw;
     min-width: 100vw !important;
     height: 97vh !important;
-    overflow: hidden  !important;
+    overflow: hidden !important;
   }
 
   .pencil-image {
@@ -357,7 +358,7 @@ body {
   .enter-grocery {
     background-image: url(input.png);
     background-repeat: no-repeat;
-    background-size:  200px 35px;
+    background-size: 200px 35px;
     height: 35px;
     width: 190px;
     padding-left: 10px;
@@ -397,7 +398,7 @@ body {
     background-repeat: no-repeat;
     margin-top: 5px;
 
-    width: 58vw  !important; 
+    width: 58vw !important;
     height: 39px;
 
     /* padding: 30px 74px; */
@@ -490,6 +491,37 @@ body {
 
   .strikeout-active {
     display: block;
+  }
+
+  .quantity-label {
+    background-color: #e8b772e0;
+    padding: 3px 6px;
+    border-radius: 4px;
+  }
+
+  .bought-label {
+    margin: 0 8px;
+    background-color: #8cb274be;
+    padding: 3px 6px;
+    border-radius: 4px;
+  }
+
+  .balance-label {
+    background-color: #f7aa97de;
+    padding: 3px 6px;
+    border-radius: 4px;
+  }
+
+  .notification-label {
+    height: 30px;
+
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+
+    position: absolute;
+    top: 9vh;
+    left: 11vw;
   }
 
 }
