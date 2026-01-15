@@ -470,10 +470,11 @@ body {
   .strikeout-line2 {
     position: absolute;
     width: 36px;
-    height: 3px;
+    height: 4px;
     opacity: 1 !important;
     z-index: 1;
     display: none;
+    transform: rotate(5deg);
 
     right: 0px;
     margin-top: 1px;
@@ -482,17 +483,18 @@ body {
   .strikeout-line {
     position: absolute;
     width: 236px;
-    height: 3px;
+    height: 4px;
     opacity: 1 !important;
-    z-index: 0.8;
+    z-index: 1;
     display: none;
     margin-top: 4px;
+    transform: rotate(1deg);
   }
-
+  
   .strikeout-active {
     display: block;
   }
-
+  
   .quantity-label {
     background-color: #e8b772e0;
     padding: 3px 6px;

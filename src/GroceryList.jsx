@@ -3,7 +3,6 @@ import React, { useEffect, useRef, useState } from "react";
 import "@fontsource/balsamiq-sans";
 import './GroceryList.css';
 import pencil from './pencilhd.png'
-import strikeout from './strikeout.png';
 import vegbg from './vegbg.png';
 import capsicum from './capsicum.png';
 import onion from './onion.png';
@@ -14,6 +13,7 @@ import ghee from './ghee.png';
 import ginger from './ginger.png';
 import milk from './milk.png';
 import salt from './salt.png';
+import strike from './et.png';
 
 
 function GroceryList() {
@@ -238,8 +238,8 @@ function GroceryList() {
             // console.log(value)
             return (
               <div key={index} className={`item-container `}>
-                <img className={`strikeout-line ${value.status === 'notDone' ? '' : 'strikeout-active'}`} src={strikeout} />
-                <img className={`strikeout-line2 ${value.status === 'notDone' ? '' : 'strikeout-active'}`} src={strikeout} />
+                <img className={`strikeout-line ${value.status === 'notDone' ? '' : 'strikeout-active'}`} src={strike} />
+                <img className={`strikeout-line2 ${value.status === 'notDone' ? '' : 'strikeout-active'}`} src={strike} />
                 <div className={`list-div ${value.status === 'notDone' ? '' : 'checked'}`}>
                   {/* {console.log(value.id)} */}
                   <p style={{ display: 'inline-block', marginLeft: '13px', marginTop: '-2px' }}>{`${index + 1}. ${value.name}`}</p>
