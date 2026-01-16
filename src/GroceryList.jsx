@@ -141,6 +141,7 @@ function GroceryList() {
     const alterName = updateValue === null ? name : updateValue;
 
     matchingList.name = alterName.charAt(0).toUpperCase() + alterName.slice(1).toLowerCase();
+    matchingList.status = 'notDone';
 
     const updatedList = [...groceryList];
 
@@ -245,7 +246,7 @@ function GroceryList() {
                   <p style={{ display: 'inline-block', marginLeft: '13px', marginTop: '-2px' }}>{`${index + 1}. ${value.name}`}</p>
                 </div>
                 <div className="update">
-                  <a className={`edit-button ${value.status === 'notDone' ? '' : 'checked'}`} onClick={() => { if (value.status === 'notDone') { handleEdit(value.name, value.id) } }}></a>
+                  <a className={`edit-button ${value.status === 'notDone' ? '' : 'checked'}`} onClick={() => { handleEdit(value.name, value.id) }}></a>
                   <a className="delete-button" onClick={() => { handleDelete(index,value.name) }}></a>
                   <a className={`check-button ${value.status === 'notDone' ? '' : 'checked'}`} onClick={() => { if (value.status === 'notDone') { handleCheck(value.id) } }}></a>
                 </div>
