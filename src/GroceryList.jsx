@@ -128,26 +128,31 @@ function GroceryList() {
     }
   }
 
-  const handleEdit = async (name, id) => {
+  const handleEdit = async (name, id, status) => {
     setIsAutoscroll(false)
 
     console.log(id);
+    console.log(status);
 
     const matchingList = matchingGroceryList(id);
 
-    const updateValue = prompt('Update the value', name);
-    // console.log(updateValue);
-
-    const alterName = updateValue === null ? name : updateValue;
-
-    matchingList.name = alterName.charAt(0).toUpperCase() + alterName.slice(1).toLowerCase();
-    matchingList.status = 'notDone';
-
-    const updatedList = [...groceryList];
-
-    setGroceryList(updatedList);
-
-    handleLocalStorage(updatedList);
+    if(status === 'done'){
+      const promtValue = prompt('Do you want to Restore',name);
+      if(promtValue){
+        matchingList.status = 'notDone';
+        const updatedList = [...groceryList];
+        setGroceryList(updatedList);
+        handleLocalStorage(updatedList);
+      }
+    }else {
+      const updateValue = prompt('Update the Grocery List', name);
+      // console.log(updateValue);
+      const alterName = updateValue === null ? name : updateValue;
+      matchingList.name = alterName.charAt(0).toUpperCase() + alterName.slice(1).toLowerCase();
+      const updatedList = [...groceryList];
+      setGroceryList(updatedList);
+      handleLocalStorage(updatedList);
+    }
 
     /*const body = {
       // name: updateValue
@@ -178,12 +183,14 @@ function GroceryList() {
 
   const handleCheck = async (id) => {
     setIsAutoscroll(false);
+    console.log(id);
 
     const matchingList = matchingGroceryList(id);
 
     // const matchingListIndex = matchingGroceryListIndex(id);  //I thought that , we will manually update the object but the object is call by reference when you update it also updated in the same reference address
 
     // console.log(matchingList);
+
 
     matchingList.status = 'done';
 
@@ -256,7 +263,7 @@ function GroceryList() {
                   <p style={{ display: 'inline-block', marginLeft: '13px', marginTop: '-2px' }}>{`${index + 1}. ${value.name}`}</p>
                 </div>
                 <div className="update">
-                  <a className={`edit-button ${value.status === 'notDone' ? '' : 'checked'}`} onClick={() => { handleEdit(value.name, value.id) }}></a>
+                  <a className={`edit-button`} onClick={() => { handleEdit(value.name, value.id, value.status) }}></a>
                   <a className="delete-button" onClick={() => { handleDelete(index,value.name) }}></a>
                   <a className={`check-button ${value.status === 'notDone' ? '' : 'checked'}`} onClick={() => { if (value.status === 'notDone') { handleCheck(value.id) } }}></a>
                 </div>
