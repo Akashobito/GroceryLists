@@ -229,7 +229,7 @@ function GroceryList() {
           <p className="quantity-label">Items : {totalQuantity}</p>
           <div className="live-status">
             <p className="bought-label">Bought : {bought}</p>
-            <p className="balance-label">Buy : {remained}</p>
+            <p className="balance-label">Balance : {remained}</p>
           </div>
           <p className="clear-all" onClick={handleCA}>ClearAll</p>
         </div>

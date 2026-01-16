@@ -386,7 +386,7 @@ body {
     position: absolute;
 
     top: 60px;
-    right: 43px;
+    right: 38px;
 
     cursor: pointer;
   }
@@ -499,13 +499,15 @@ body {
     background-color: #e8b772e0;
     padding: 3px 6px;
     border-radius: 4px;
+    font-size: 12px;
   }
 
   .bought-label {
     margin: 0 8px;
+    border-radius: 4px;
     background-color: #8cb274be;
     padding: 3px 6px;
-    border-radius: 4px;
+    font-size: 12px;
   }
   
   .balance-label {
@@ -514,6 +516,7 @@ body {
     border-radius: 4px;
     margin: 0 8px;
     margin-top: 4px;
+    font-size: 12px;
   }
   
   .notification-label {
@@ -537,6 +540,7 @@ body {
   }
   
   .clear-all {
+    font-size: 12px;
     padding: 3px 6px;
     background-color: rgba(127, 127, 127, 0.67);
     border-radius: 4px;
