@@ -482,7 +482,7 @@ body {
 
   .strikeout-line {
     position: absolute;
-    width: 186px;
+    width: 216px;
     height: 4px;
     opacity: 1 !important;
     z-index: 1;
