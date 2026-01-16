@@ -507,23 +507,38 @@ body {
     padding: 3px 6px;
     border-radius: 4px;
   }
-
+  
   .balance-label {
     background-color: #f7aa97de;
     padding: 3px 6px;
     border-radius: 4px;
+    margin: 0 8px;
+    margin-top: 4px;
   }
-
+  
   .notification-label {
     height: 30px;
-
+    width: 220px;
+    
     display: flex;
     /* justify-content: space-between; */
     align-items: center;
-
+    justify-content: space-evenly;
+    
     position: absolute;
     top: 9vh;
     left: 11vw;
   }
 
+  .live-status  {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .clear-all {
+    padding: 3px 6px;
+    background-color: rgba(127, 127, 127, 0.67);
+    border-radius: 4px;
+  }
 }

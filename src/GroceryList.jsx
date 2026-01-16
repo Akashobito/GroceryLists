@@ -204,6 +204,11 @@ function GroceryList() {
     // getGroceryList(); */
   }
 
+  const handleCA = () => {
+    setGroceryList([]);
+    handleLocalStorage([]);
+  }
+
 
   return (
     <>
@@ -222,9 +227,14 @@ function GroceryList() {
       <div className='background-image'>
         <div className="notification-label">
           <p className="quantity-label">Items : {totalQuantity}</p>
-          <p className="bought-label">Bought : {bought}</p>
-          <p className="balance-label">Buy : {remained}</p>
+          <div className="live-status">
+            <p className="bought-label">Bought : {bought}</p>
+            <p className="balance-label">Buy : {remained}</p>
+          </div>
+          <p className="clear-all" onClick={handleCA}>ClearAll</p>
         </div>
+
+
         <input className="enter-grocery"
           placeholder="Enter Grocery"
           value={inputText}
