@@ -18,7 +18,7 @@ body {
   background: url(bgfullsize.png) top left / 100vw 100vh no-repeat;
   /* background-repeat: no-repeat;
   background-size: 100vw 100vh; */
-  background-color: #F9F2D8;
+  background-color: #f9f2d8;
   width: 100%;
   height: 100vh;
   display: flex;
@@ -34,7 +34,7 @@ body {
   width: 245px;
   padding: 0px 0px;
   padding-left: 10px;
-  background-color: #F9F2D8;
+  background-color: #f9f2d8;
 
   border: none;
   outline: none;
@@ -44,7 +44,6 @@ body {
   top: 80px;
   left: 180px;
   text-transform: capitalize;
-
 }
 
 .submit-button {
@@ -64,7 +63,7 @@ body {
 }
 
 .list-div {
-  background-color: #F9F2D8;
+  background-color: #f9f2d8;
   background-image: url(inputbox.png);
   background-size: 257px 49px;
   background-repeat: no-repeat;
@@ -78,7 +77,6 @@ body {
 
   display: flex;
   align-items: center;
-
 }
 
 .listed-item {
@@ -150,7 +148,6 @@ body {
   width: 160px;
   height: 500px;
   transform: rotate(-10.5deg);
-
 }
 
 .strikeout-line {
@@ -232,7 +229,6 @@ body {
   display: none;
 }
 
-
 .garlic-image {
   position: absolute;
   right: 60px;
@@ -241,7 +237,6 @@ body {
   width: 160px;
   height: 140px;
   display: none;
-
 }
 
 .ginger-image {
@@ -252,7 +247,6 @@ body {
   width: 130px;
   height: 120px;
   display: none;
-
 }
 
 .milk-image {
@@ -263,7 +257,6 @@ body {
   width: 140px;
   height: 190px;
   display: none;
-
 }
 
 .chicken-image {
@@ -275,7 +268,6 @@ body {
   width: 250px;
   height: 140px;
   display: none;
-
 }
 
 .salt-image {
@@ -286,13 +278,12 @@ body {
   width: 150px;
   height: 140px;
   display: none;
-
 }
 
-@media(min-width: 800px) {
+@media (min-width: 800px) {
   body {
     background: url(bghdfullsize1.png) top left / 100vw 100vh no-repeat;
-    background-color: #F9F2D8;
+    background-color: #f9f2d8;
     width: 100%;
     height: 100vh;
     display: flex;
@@ -321,14 +312,14 @@ body {
   }
 }
 
-@media(max-width: 500px) {
+@media (max-width: 500px) {
   * {
     font-size: 14px;
   }
 
   body {
     background: url(bgsmallscreenhd.png) top left / 100vw 97vh no-repeat;
-    background-color: #F9F2D8;
+    background-color: #f9f2d8;
     height: 97vh !important;
     width: 100vw !important;
     display: flex;
@@ -362,7 +353,7 @@ body {
     height: 35px;
     width: 190px;
     padding-left: 10px;
-    background-color: #F9F2D8;
+    background-color: #f9f2d8;
 
     border: none;
     outline: none;
@@ -372,7 +363,6 @@ body {
     top: 117px;
     left: 45px;
     text-transform: capitalize;
-
   }
 
   .submit-button {
@@ -392,7 +382,7 @@ body {
   }
 
   .list-div {
-    background-color: #F9F2D8;
+    background-color: #f9f2d8;
     background-image: url(inputbox.png);
     background-size: 199px 39px;
     background-repeat: no-repeat;
@@ -405,7 +395,6 @@ body {
 
     display: flex;
     align-items: center;
-
   }
 
   .listed-item {
@@ -490,24 +479,26 @@ body {
     margin-top: 4px;
     transform: rotate(1deg);
   }
-  
+
   .strikeout-active {
     display: block;
   }
-  
+
   .quantity-label {
     background-color: #e8b772e0;
     padding: 3px 6px;
     border-radius: 4px;
     font-size: 12px;
+    cursor: pointer;
   }
-
+  
   .bought-label {
     margin: 0 8px;
     border-radius: 4px;
     background-color: #8cb274be;
     padding: 3px 6px;
     font-size: 12px;
+    cursor: pointer;
   }
   
   .balance-label {
@@ -517,6 +508,7 @@ body {
     margin: 0 8px;
     margin-top: 4px;
     font-size: 12px;
+    cursor: pointer;
   }
   
   .notification-label {
@@ -532,8 +524,8 @@ body {
     top: 9vh;
     left: 9.5vw;
   }
-
-  .live-status  {
+  
+  .live-status {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -544,5 +536,55 @@ body {
     padding: 3px 6px;
     background-color: rgba(127, 127, 127, 0.67);
     border-radius: 4px;
+    cursor: pointer;
   }
+}
+
+@media (min-width: 800px) {
+  .notification-label{
+    width: 180px;
+    position: relative;
+    left: -80px;
+    top: 70px;
+  }
+  .quantity-label {
+    padding: 10px;
+    background-color: #e8b772e0;
+    width: 110px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    cursor: pointer;
+  }
+  .bought-label {
+    padding: 10px;
+    background-color: #8cb274be;
+    width: 110px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    cursor: pointer;
+  }
+  .balance-label {
+    padding: 10px;
+    background-color: #f7aa97de;
+    width: 110px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    cursor: pointer;
+  }
+  .clear-all {
+    padding: 10px;
+    background-color: rgba(127, 127, 127, 0.67);
+    width: 70px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    cursor: pointer;
+  }
+  
+  .chicken-image {
+    display: none;
+  }
+  .salt-image {
+    display: none;
+  }
+
 }

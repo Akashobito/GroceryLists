@@ -218,7 +218,7 @@ function GroceryList() {
 
 
   return (
-    <>
+    <div className="div">
       <img className="pencil-image" src={pencil} />
       <img className="veggies-image" src={vegbg} />
       <img className="capsicum-image" src={capsicum} />
@@ -272,7 +272,7 @@ function GroceryList() {
           })}
         </div>
       </div>
-    </>
+    </div>
   )
 }
 
