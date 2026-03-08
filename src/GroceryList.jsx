@@ -1,25 +1,26 @@
 import React, { useEffect, useRef, useState } from "react";
 // import axios from "axios";
 import "@fontsource/balsamiq-sans";
-import './GroceryList.css';
-import pencil from './pencilhd.png'
-import vegbg from './vegbg.png';
-import capsicum from './capsicum.png';
-import onion from './onion.png';
-import carrot from './carrot.png';
-import garlic from './garlic.png';
-import chicken from './chicken.png';
-import ghee from './ghee.png';
-import ginger from './ginger.png';
-import milk from './milk.png';
-import salt from './salt.png';
-import strike from './et.png';
-
+import "./GroceryList.css";
+import pencil from "./pencilhd.png";
+import vegbg from "./vegbg.png";
+import capsicum from "./capsicum.png";
+import onion from "./onion.png";
+import carrot from "./carrot.png";
+import garlic from "./garlic.png";
+import chicken from "./chicken.png";
+import ghee from "./ghee.png";
+import ginger from "./ginger.png";
+import milk from "./milk.png";
+import salt from "./salt.png";
+import strike from "./et.png";
 
 function GroceryList() {
-  const [inputText, setInputText] = useState('');
-  const [groceryList, setGroceryList] = useState(JSON.parse(localStorage.getItem('groceryList')) || []);
-  const [isAutoscroll, setIsAutoscroll] = useState(true);   //to controll the autoscroll because when submit and checkout, both are scrolling
+  const [inputText, setInputText] = useState("");
+  const [groceryList, setGroceryList] = useState(
+    JSON.parse(localStorage.getItem("groceryList")) || [],
+  );
+  const [isAutoscroll, setIsAutoscroll] = useState(true); //to controll the autoscroll because when submit and checkout, both are scrolling
   const [totalQuantity, setTotalQuantity] = useState(0);
   const [bought, setBought] = useState(0);
   const [remained, setRemained] = useState(0);
@@ -48,42 +49,43 @@ function GroceryList() {
     const handleQuantity = () => {
       const quantity = groceryList.length;
       setTotalQuantity(quantity);
-    }
+    };
 
     const handleBought = () => {
       groceryList.forEach((value) => {
-        if (value.status === 'done') {
+        if (value.status === "done") {
           boughtItem += 1;
         }
-      })
+      });
       setBought(boughtItem);
-    }
+    };
 
     const handleRemained = () => {
       groceryList.forEach((value) => {
-        if (value.status === 'notDone') {
+        if (value.status === "notDone") {
           remainedItem += 1;
         }
       });
       setRemained(remainedItem);
-    }
+    };
 
+    // sorting(groceryList);
     handleQuantity();
     handleBought();
     handleRemained();
-
+    // console.log(groceryList);
   }, [groceryList]);
 
   const handleLocalStorage = (groceryList) => {
     const groceryListString = JSON.stringify(groceryList);
-    localStorage.setItem('groceryList', groceryListString);
-  }
+    localStorage.setItem("groceryList", groceryListString);
+  };
 
   const matchingGroceryList = (id) => {
     return groceryList.find((listItem) => {
-      return listItem.id === id
-    })
-  }
+      return listItem.id === id;
+    });
+  };
 
   /* const matchingGroceryListIndex = (id) => {
     return groceryList.findIndex((listItem)=>{
@@ -92,17 +94,32 @@ function GroceryList() {
   }
  */
 
+  const sorting = (groceryList) => {
+    const shortingNotDoneList = groceryList.filter((value) => {
+      return value.sorting === 0;
+    });
+
+    const shortingDoneList = groceryList.filter((value) => {
+      return value.sorting === 1;
+    });
+
+    const finalResult = [...shortingNotDoneList, ...shortingDoneList];
+    // console.log(finalResult);
+
+    return finalResult;
+  };
+
   const handleInput = (event) => {
     // console.log(event.target.value.charAt(0).toUpperCase())
     setInputText(event.target.value);
-  }
+  };
 
   const handleEnter = (event) => {
     // console.log(event.key)
-    if (event.key === 'Enter') {
+    if (event.key === "Enter") {
       handleSubmit();
     }
-  }
+  };
 
   const handleSubmit = async () => {
     if (inputText) {
@@ -110,48 +127,58 @@ function GroceryList() {
       // console.log(inputText);
       const body = {
         id: crypto.randomUUID(),
-        name: inputText.charAt(0).toUpperCase() + inputText.slice(1).toLowerCase(),
-        status: 'notDone'
-      }
+        name:
+          inputText.charAt(0).toUpperCase() + inputText.slice(1).toLowerCase(),
+        status: "notDone",
+        sorting: 0,
+      };
 
       const inputList = [...groceryList, body];
 
-      setGroceryList(inputList);
+      const sorted = sorting(inputList);
 
-      handleLocalStorage(inputList);
+      setGroceryList(sorted);
 
-      setInputText('');
+      handleLocalStorage(sorted);
+
+      setInputText("");
 
       /* await axios.post('http://localhost:3000/groceryList', body);
       // console.log(groceryList);
       getGroceryList(); */
     }
-  }
+  };
 
   const handleEdit = async (name, id, status) => {
-    setIsAutoscroll(false)
+    setIsAutoscroll(false);
 
     console.log(id);
     console.log(status);
 
     const matchingList = matchingGroceryList(id);
 
-    if(status === 'done'){
-      const promtValue = prompt('Do you want to Restore',name);
-      if(promtValue){
-        matchingList.status = 'notDone';
+    if (status === "done") {
+      const promtValue = prompt("Do you want to Restore", name);
+      if (promtValue) {
+        matchingList.status = "notDone";
+        matchingList.sorting = 0;
+        
         const updatedList = [...groceryList];
-        setGroceryList(updatedList);
-        handleLocalStorage(updatedList);
+        
+        const sorted = sorting(updatedList);
+        setGroceryList(sorted);
+        handleLocalStorage(sorted);
       }
-    }else {
-      const updateValue = prompt('Update the Grocery List', name);
+    } else {
+      const updateValue = prompt("Update the Grocery List", name);
       // console.log(updateValue);
       const alterName = updateValue === null ? name : updateValue;
-      matchingList.name = alterName.charAt(0).toUpperCase() + alterName.slice(1).toLowerCase();
+      matchingList.name =
+        alterName.charAt(0).toUpperCase() + alterName.slice(1).toLowerCase();
       const updatedList = [...groceryList];
-      setGroceryList(updatedList);
-      handleLocalStorage(updatedList);
+      const sorted = sorting(updatedList);
+      setGroceryList(sorted);
+      handleLocalStorage(sorted);
     }
 
     /*const body = {
@@ -161,29 +188,29 @@ function GroceryList() {
     }
     // await axios.put(`http://localhost:3000/groceryList/${id}`, body);
     // getGroceryList(); */
-  }
+  };
 
-  const handleDelete = async (index,name) => {
+  const handleDelete = async (index, name) => {
     setIsAutoscroll(false);
 
-    const value = prompt('you want to remove it!',name);
+    const value = prompt("you want to remove it!", name);
 
-    if(value){
+    if (value) {
       const currentList = [...groceryList];
       currentList.splice(index, 1);
       console.log(currentList);
       setGroceryList(currentList);
-      handleLocalStorage(currentList)
+      handleLocalStorage(currentList);
     }
 
     // console.log('delete');
     // await axios.delete(`http://localhost:3000/groceryList/${id}`);
     // getGroceryList()
-  }
+  };
 
   const handleCheck = async (id) => {
     setIsAutoscroll(false);
-    console.log(id);
+    // console.log(id);
 
     const matchingList = matchingGroceryList(id);
 
@@ -191,16 +218,20 @@ function GroceryList() {
 
     // console.log(matchingList);
 
-
-    matchingList.status = 'done';
+    matchingList.status = "done";
+    matchingList.sorting = 1;
 
     // console.log(matchingList);
 
-    const updatedList = [...groceryList];  //in this groceryList it has the object that is updated 
+    const updatedList = [...groceryList]; //in this groceryList it has the object that is updated
 
-    setGroceryList(updatedList);
+    const sorted = sorting(updatedList);
 
-    handleLocalStorage(updatedList);
+    // console.log(sorted);
+
+    setGroceryList(sorted);
+
+    handleLocalStorage(sorted);
 
     /* // console.log('checked');
     const body = {
@@ -209,13 +240,15 @@ function GroceryList() {
     }
     // await axios.put(`http://localhost:3000/groceryList/${id}`, body);
     // getGroceryList(); */
-  }
+  };
 
   const handleCA = () => {
-    setGroceryList([]);
-    handleLocalStorage([]);
-  }
-
+    const doubleCheck = prompt('','It deletes all you current list')
+    if(doubleCheck){
+      setGroceryList([]);
+      handleLocalStorage([]);
+    }
+  };
 
   return (
     <div className="div">
@@ -231,49 +264,82 @@ function GroceryList() {
       <img className="milk-image" src={milk} />
       <img className="salt-image" src={salt} />
 
-      <div className='background-image'>
+      <div className="background-image">
         <div className="notification-label">
           <p className="quantity-label">Items : {totalQuantity}</p>
           <div className="live-status">
             <p className="bought-label">Bought : {bought}</p>
             <p className="balance-label">Balance : {remained}</p>
           </div>
-          <p className="clear-all" onClick={handleCA}>ClearAll</p>
+          <p className="clear-all" onClick={handleCA}>
+            ClearAll
+          </p>
         </div>
 
-
-        <input className="enter-grocery"
+        <input
+          className="enter-grocery"
           placeholder="Enter Grocery"
           value={inputText}
           autoFocus
           onChange={handleInput}
-          onKeyDown={handleEnter} />
-        <a className="submit-button"
-          onClick={handleSubmit} />
+          onKeyDown={handleEnter}
+        />
+        <a className="submit-button" onClick={handleSubmit} />
 
         <div ref={ref} className="listed-item">
           {groceryList.map((value, index) => {
             // console.log(value)
             return (
               <div key={index} className={`item-container `}>
-                <img className={`strikeout-line ${value.status === 'notDone' ? '' : 'strikeout-active'}`} src={strike} />
-                <img className={`strikeout-line2 ${value.status === 'notDone' ? '' : 'strikeout-active'}`} src={strike} />
-                <div className={`list-div ${value.status === 'notDone' ? '' : 'checked'}`}>
+                <img
+                  className={`strikeout-line ${value.status === "notDone" ? "" : "strikeout-active"}`}
+                  src={strike}
+                />
+                <img
+                  className={`strikeout-line2 ${value.status === "notDone" ? "" : "strikeout-active"}`}
+                  src={strike}
+                />
+                <div
+                  className={`list-div ${value.status === "notDone" ? "" : "checked"}`}
+                >
                   {/* {console.log(value.id)} */}
-                  <p style={{ display: 'inline-block', marginLeft: '13px', marginTop: '-2px' }}>{`${index + 1}. ${value.name}`}</p>
+                  <p
+                    style={{
+                      display: "inline-block",
+                      marginLeft: "13px",
+                      marginTop: "-2px",
+                    }}
+                  >{`${index + 1}. ${value.name}`}</p>
                 </div>
                 <div className="update">
-                  <a className={`edit-button`} onClick={() => { handleEdit(value.name, value.id, value.status) }}></a>
-                  <a className="delete-button" onClick={() => { handleDelete(index,value.name) }}></a>
-                  <a className={`check-button ${value.status === 'notDone' ? '' : 'checked'}`} onClick={() => { if (value.status === 'notDone') { handleCheck(value.id) } }}></a>
+                  <a
+                    className={`edit-button`}
+                    onClick={() => {
+                      handleEdit(value.name, value.id, value.status);
+                    }}
+                  ></a>
+                  <a
+                    className="delete-button"
+                    onClick={() => {
+                      handleDelete(index, value.name);
+                    }}
+                  ></a>
+                  <a
+                    className={`check-button ${value.status === "notDone" ? "" : "checked"}`}
+                    onClick={() => {
+                      if (value.status === "notDone") {
+                        handleCheck(value.id);
+                      }
+                    }}
+                  ></a>
                 </div>
               </div>
-            )
+            );
           })}
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default GroceryList
+export default GroceryList;
